@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(#4caf50 0%, #800080 100%);
+  background: linear-gradient(70deg, #a4c9a4, #ffffff);
 }
 
 code {
@@ -23,6 +23,10 @@ code {
   margin: 0;
   font-size: 24px;
   font-weight: bold;
+}
+
+.header:hover {
+  color: #a6b429;
 }
 .App {
   text-align: center;
@@ -52,11 +56,34 @@ code {
 .SearcBar button:hover {
   background-color: #1e3166;
 }
+.CustomerData {
+  margin: 0 auto;
+  width: 80%;
+  text-align: center;
+}
+
+.CustomerData table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.CustomerData th,
+.CustomerData td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.CustomerData th {
+  background-color: #f2f2f2;
+}
+
 .footer {
   display: flex;
   justify-content: space-between;
   padding: 20px;
   background-color: #f8f9fa;
+  margin-top: 20%;
 }
 
 .footer-section {
@@ -90,13 +117,13 @@ code {
 .social-icons a {
   margin: 0 5px;
 }
-
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #343a40;
+  background-color: #344039;
+  font-size: larger;
 }
 
 .nav-links {
@@ -104,6 +131,7 @@ code {
   display: flex;
   margin: 0;
   padding: 0;
+  margin-left: auto;
 }
 
 .nav-links li {

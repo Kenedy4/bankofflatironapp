@@ -5,39 +5,48 @@ import Header from "./components/Header";
 import NavBar from "./components/NavBar";
 import TransactionTable from "./components/TransactionTable";
 import AddTransactionForm from "./components/AddTransactionForm";
-import SearchBar from "./components/SearchBar";
 import Footer from "./components/Footer";
 
 function App() {
-  // const [setHeader] = useState(true);
-  // const [setNavbar] = useState(true);
-  const [searchTerm, setSearchTerm] = useState("");
   const [transactions, setTransactions] = useState([]);
-  // const [showFooter, setShowFooter] = useState(true);
 
   useEffect(() => {
     axios
-      .get("http://localhost:8001/transactions")
+      .get("http://localhost:3000/transactions")
       .then((response) => setTransactions(response.data))
       .catch((error) => console.error(error));
   }, []);
 
   const addTransaction = (transaction) => {
-    setTransactions([...transactions, transaction]);
+    axios
+      .post("http://localhost:3000/transactions", transaction)
+      .then((response) => {
+        setTransactions([...transactions, response.data]);
+        alert("Transaction successfully added");
+      })
+      .catch((error) => console.error(error));
   };
 
-  const filteredTransactions = transactions.filter((transaction) =>
-    transaction.description.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const deleteTransaction = (id) => {
+    axios
+      .delete(`http://localhost:3000/transactions/${id}`)
+      .then(() => {
+        setTransactions(
+          transactions.filter((transaction) => transaction.id !== id)
+        );
+      })
+      .catch((error) => console.error(error));
+  };
 
   return (
     <div className="App">
-      {/* <Header /> */}
-      <Header setSearchTerm={setSearchTerm} />
+      <Header />
       <NavBar />
-      <SearchBar setSearchTerm={setSearchTerm} />
       <AddTransactionForm addTransaction={addTransaction} />
-      <TransactionTable transactions={filteredTransactions} />
+      <TransactionTable
+        transactions={transactions}
+        onDelete={deleteTransaction}
+      />
       <Footer />
     </div>
   );

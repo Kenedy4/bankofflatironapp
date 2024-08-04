@@ -1,52 +1,67 @@
 import React, { useState } from "react";
 
 function AddTransactionForm({ addTransaction }) {
-  const [description, setDescription] = useState("");
-  const [amount, setAmount] = useState("");
-  const [date, setDate] = useState("");
-  const [category, setCategory] = useState("");
+  const [form, setForm] = useState({
+    description: "",
+    amount: "",
+    date: "",
+    category: "",
+  });
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newTransaction = { description, amount, date, category };
+    if (!form.description || !form.amount || !form.date || !form.category) {
+      alert("All fields are required");
+      return;
+    }
+    const newTransaction = { ...form, id: Date.now() };
     addTransaction(newTransaction);
-    setDescription("");
-    setAmount("");
-    setDate("");
-    setCategory("");
+    setForm({ description: "", amount: "", date: "", category: "" });
+    alert("Transaction successfully added");
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        placeholder="Description"
-      />{" "}
-      &nbsp;&nbsp;
-      <input
-        type="number"
-        value={amount}
-        onChange={(e) => setAmount(e.target.value)}
-        placeholder="Amount"
-      />{" "}
-      &nbsp;&nbsp;
-      <input
-        type="date"
-        value={date}
-        onChange={(e) => setDate(e.target.value)}
-        placeholder="Date"
-      />
-      &nbsp;&nbsp;
-      <input
-        type="text"
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
-        placeholder="Category"
-      />{" "}
-      <button type="submit">Add Transaction</button>
-    </form>
+    <div>
+      <h1>Customer Data</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="description"
+          placeholder="Description"
+          value={form.description}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="number"
+          name="amount"
+          placeholder="Amount"
+          value={form.amount}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="date"
+          name="date"
+          value={form.date}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="category"
+          placeholder="Category"
+          value={form.category}
+          onChange={handleChange}
+          required
+        />
+        <button type="submit">Add Transaction</button>
+      </form>
+    </div>
   );
 }
 

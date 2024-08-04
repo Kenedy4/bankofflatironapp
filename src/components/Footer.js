@@ -29,7 +29,7 @@ const Footer = () => {
         <p>Email: contact@flatironbank.com</p>
       </div>
       <div className="footer-section social-media">
-        <h2>Follow Us</h2>
+        <h2>Follow Us and interact with us on:</h2> <br />
         <a
           href="https://www.facebook.com"
           target="_blank"
