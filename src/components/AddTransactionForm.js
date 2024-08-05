@@ -1,12 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import TransactionTable from "./TransactionTable";
 
-function AddTransactionForm({ addTransaction }) {
+function AddTransactionForm() {
+  const [transactions, setTransactions] = useState([]);
   const [form, setForm] = useState({
     description: "",
     amount: "",
     date: "",
     category: "",
   });
+
+  useEffect(() => {
+    fetch("http://localhost:3000/transactions")
+      .then((response) => response.json())
+      .then((data) => setTransactions(data))
+      .catch((error) => console.error(error));
+  }, []);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -19,14 +28,38 @@ function AddTransactionForm({ addTransaction }) {
       return;
     }
     const newTransaction = { ...form, id: Date.now() };
-    addTransaction(newTransaction);
-    setForm({ description: "", amount: "", date: "", category: "" });
-    alert("Transaction successfully added");
+
+    fetch("http://localhost:3000/transactions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newTransaction),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setTransactions([...transactions, data]);
+        setForm({ description: "", amount: "", date: "", category: "" });
+        alert("Transaction successfully added");
+      })
+      .catch((error) => console.error(error));
+  };
+
+  const deleteTransaction = (id) => {
+    fetch(`http://localhost:3000/transactions/${id}`, {
+      method: "DELETE",
+    })
+      .then(() => {
+        setTransactions(
+          transactions.filter((transaction) => transaction.id !== id)
+        );
+      })
+      .catch((error) => console.error(error));
   };
 
   return (
     <div>
-      <h1>Customer Data</h1>
+      <h1>Transaction Tracker</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -61,6 +94,10 @@ function AddTransactionForm({ addTransaction }) {
         />
         <button type="submit">Add Transaction</button>
       </form>
+      <TransactionTable
+        transactions={transactions}
+        onDelete={deleteTransaction}
+      />
     </div>
   );
 }

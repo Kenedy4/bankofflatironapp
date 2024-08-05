@@ -1,24 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
 function TransactionTable({ transactions, onDelete }) {
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const filteredTransactions = transactions.filter((transaction) =>
-    transaction.description.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
-
   return (
     <div className="CustomerData">
-      <input
-        type="text"
-        value={searchTerm}
-        onChange={handleSearchChange}
-        placeholder="Search transactions"
-      />
       <table>
         <thead>
           <tr>
@@ -30,7 +14,7 @@ function TransactionTable({ transactions, onDelete }) {
           </tr>
         </thead>
         <tbody>
-          {filteredTransactions.map((transaction) => (
+          {transactions.map((transaction) => (
             <tr key={transaction.id}>
               <td>{transaction.description}</td>
               <td>{transaction.amount}</td>
