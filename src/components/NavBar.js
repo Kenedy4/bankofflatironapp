@@ -14,9 +14,9 @@ const Navbar = ({ setNavbar }) => {
           <a href="#contact-us">Contact Us</a>
         </li>
       </ul>
-      <div className="search-bar">
+      {/* <div className="search-bar">
         <input type="text" placeholder="Search..." />
-      </div>
+      </div> */}
     </nav>
   );
 };

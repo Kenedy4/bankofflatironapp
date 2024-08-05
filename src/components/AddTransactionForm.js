@@ -24,6 +24,7 @@ function AddTransactionForm({ onAddTransaction }) {
 
   return (
     <div className="cardform">
+      <h2>Add New Transaction</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

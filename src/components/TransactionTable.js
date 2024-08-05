@@ -3,6 +3,7 @@ import React from "react";
 function TransactionTable({ transactions, onDelete }) {
   return (
     <div className="CustomerData">
+      <h2>Updated Customer Details</h2>
       <table>
         <thead>
           <tr>
@@ -14,6 +15,7 @@ function TransactionTable({ transactions, onDelete }) {
           </tr>
         </thead>
         <tbody>
+          <h2>Customer Details</h2>
           {transactions.map((transaction) => (
             <tr key={transaction.id}>
               <td>{transaction.description}</td>
