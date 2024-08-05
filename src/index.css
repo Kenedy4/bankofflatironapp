@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(70deg, #a4c9a4, #ffffff);
+  font-size: ;
 }
 
 code {
@@ -56,10 +57,49 @@ code {
 .SearcBar button:hover {
   background-color: #1e3166;
 }
+/* AddTransactionForm.css */
+.cardform {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 10px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+form button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #45a049;
+}
+
 .CustomerData {
   margin: 0 auto;
   width: 80%;
   text-align: center;
+  margin-top: 10px;
 }
 
 .CustomerData table {
@@ -147,4 +187,25 @@ code {
 .search-bar input {
   padding: 5px;
   font-size: 16px;
+}
+.social-media-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.social-media-icons li {
+  display: inline;
+}
+
+.social-media-icons a {
+  color: #000;
+  font-size: 28px;
+  /* transition: color 0.3s ease; */
+}
+
+.social-media-icons a:hover {
+  color: #0073e6;
 }

@@ -1,103 +1,59 @@
-import React, { useState, useEffect } from "react";
-import TransactionTable from "./TransactionTable";
+import React, { useState } from "react";
 
-function AddTransactionForm() {
-  const [transactions, setTransactions] = useState([]);
-  const [form, setForm] = useState({
-    description: "",
-    amount: "",
-    date: "",
-    category: "",
-  });
-
-  useEffect(() => {
-    fetch("http://localhost:3000/transactions")
-      .then((response) => response.json())
-      .then((data) => setTransactions(data))
-      .catch((error) => console.error(error));
-  }, []);
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+function AddTransactionForm({ onAddTransaction }) {
+  const [description, setDescription] = useState("");
+  const [amount, setAmount] = useState("");
+  const [date, setDate] = useState("");
+  const [category, setCategory] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!form.description || !form.amount || !form.date || !form.category) {
-      alert("All fields are required");
-      return;
-    }
-    const newTransaction = { ...form, id: Date.now() };
-
-    fetch("http://localhost:3000/transactions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newTransaction),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setTransactions([...transactions, data]);
-        setForm({ description: "", amount: "", date: "", category: "" });
-        alert("Transaction successfully added");
-      })
-      .catch((error) => console.error(error));
-  };
-
-  const deleteTransaction = (id) => {
-    fetch(`http://localhost:3000/transactions/${id}`, {
-      method: "DELETE",
-    })
-      .then(() => {
-        setTransactions(
-          transactions.filter((transaction) => transaction.id !== id)
-        );
-      })
-      .catch((error) => console.error(error));
+    onAddTransaction({
+      id: Date.now(),
+      description,
+      amount,
+      date,
+      category,
+    });
+    alert("Transaction Added Successfully");
+    setDescription("");
+    setAmount("");
+    setDate("");
+    setCategory("");
   };
 
   return (
-    <div>
-      <h1>Transaction Tracker</h1>
+    <div className="cardform">
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          name="description"
           placeholder="Description"
-          value={form.description}
-          onChange={handleChange}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
           required
         />
         <input
           type="number"
-          name="amount"
           placeholder="Amount"
-          value={form.amount}
-          onChange={handleChange}
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
           required
         />
         <input
           type="date"
-          name="date"
-          value={form.date}
-          onChange={handleChange}
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
           required
         />
         <input
           type="text"
-          name="category"
           placeholder="Category"
-          value={form.category}
-          onChange={handleChange}
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
           required
         />
         <button type="submit">Add Transaction</button>
       </form>
-      <TransactionTable
-        transactions={transactions}
-        onDelete={deleteTransaction}
-      />
     </div>
   );
 }
