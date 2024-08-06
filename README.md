@@ -4,7 +4,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory, you can run:
+### Accessing and using this React App
+
+Create a React directory from the terminal using this command `mkdir bankofflatiron`
+After creating the directory run `cd bankofflatiron`
+While at this directory open your browesr to access my github account [git@github.com:Kenedy4/bankofflatironapp.git]
+Fork the repository and clone it to your repository using `git clone git@github.com:Kenedy4/bankofflatironapp.git` on your terminal.
+After cloning use `cd Kenedy4/bankofflatironapp` on your terminal.
+Executing the above steps successfully will get you ready to start using the bankofflatiron app on your terminal.
+
+In that project directory [Computer $ `bankofflatiron/Kenedy4/bankofflatironapp`], you can run:
 
 ### `npm start`
 
@@ -13,6 +22,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
+
+## `npx json-server --watch scr/db.json --port 8000` or `npx json-server --watch db.json --port 8000`
+
+Runs the server in the development mode with the specified port number and server options as arguments.
+Open [http://localhost:8000/transactions](http://localhost:8000/transactions) to view it in your browser.
 
 ### `npm test`
 
@@ -39,32 +53,28 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+# Other Essential Details About this Application
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Project Requirements and Features
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The project should allow allow user to post a new bank transaction to their account.
+The user can filter the transaction with discription keywords through the search button.
+A user can delete a transaction from the json database.
+A user can send message to the bank through its official social network.
 
-### Code Splitting
+## System Interaction
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Once you have run `npm start` and `npx json-server --watch scr/db.json --port 8000` or `npx json-server --watch db.json --port 8000` you should see the landing page as follows:
+[![Click to view the system user interface](public/system1.png) ![Click to view the system user interface](public/system2.png) ![Click to view the system user interface](public/system3.png)]
 
-### Analyzing the Bundle Size
+### NOTE:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    This program is not live, however, it is mimicking a real live-application of a subsection of a bank component or functionality. Therefore, It allows the user to simulate bank operations.
 
-### Making a Progressive Web App
+## Usefullness of the application
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+This application can be used in any bank that needs to allow user interaction with their systems.
 
-### Advanced Configuration
+# License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This application licensed under the GNU General Public License v3.0
