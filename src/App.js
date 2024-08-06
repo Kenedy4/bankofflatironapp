@@ -13,7 +13,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // Fetch transactions on mount
+  // Fetch transactions
   useEffect(() => {
     fetch("http://localhost:8000/transactions")
       .then((response) => response.json())
@@ -70,7 +70,7 @@ function App() {
   const filteredTransactions = transactions.filter((transaction) =>
     transaction.description.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
+  // Return the invoked functions
   return (
     <div className="App">
       <Header />
