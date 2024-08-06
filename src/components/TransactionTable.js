@@ -1,5 +1,5 @@
 import React from "react";
-
+// TransactionTable Component
 function TransactionTable({ transactions, onDelete }) {
   return (
     <div className="CustomerData">
