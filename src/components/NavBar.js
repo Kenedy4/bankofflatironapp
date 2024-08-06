@@ -8,15 +8,12 @@ const Navbar = ({ setNavbar }) => {
           <a href="#home">Home</a>
         </li>
         <li>
-          <a href="#about-us">About Us</a>
+          <a href="#home">About Us</a>
         </li>
         <li>
-          <a href="#contact-us">Contact Us</a>
+          <a href="#footer">Contact Us</a>
         </li>
       </ul>
-      {/* <div className="search-bar">
-        <input type="text" placeholder="Search..." />
-      </div> */}
     </nav>
   );
 };

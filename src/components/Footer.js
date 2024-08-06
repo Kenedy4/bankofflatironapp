@@ -29,7 +29,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="footer">
+    <footer className="footer" id="footer">
       <div className="cardform">
         <h2>Contact Us</h2>
         <form onSubmit={handleSubmit}>

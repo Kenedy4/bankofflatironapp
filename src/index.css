@@ -33,31 +33,72 @@ code {
   text-align: center;
 }
 
-.SearcBar {
-  margin: 20px 0;
-  padding: 10px;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
+.home {
+  padding: 20px;
+
+  margin: 40px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(70deg, #ffffff, #a4c9a4);
 }
 
-.SearcBar input[type="text"] {
-  padding: 5px;
+.home h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.home p {
+  color: #666;
+  line-height: 1.6;
+}
+.container {
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(70deg, #ffffff, #a4c9a4);
+  flex-direction: column;
+}
+
+#data {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+table {
   width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
 }
 
-.SearcBar button {
-  padding: 5px 10px;
-  background-color: #4caf50;
-  color: #ffffff;
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+button {
+  background-color: #ff6666;
+  color: white;
   border: none;
-  border-radius: 4px;
+  padding: 5px 10px;
   cursor: pointer;
+  border-radius: 3px;
 }
 
-.SearcBar button:hover {
-  background-color: #1e3166;
+button:hover {
+  background-color: #5ba2b4;
 }
-/* AddTransactionForm.css */
 .cardform {
   background-color: white;
   border: 1px solid #ddd;
@@ -92,13 +133,13 @@ form button {
 }
 
 form button:hover {
-  background-color: #45a049;
+  background-color: #7fa5c9;
 }
 
 .CustomerData {
   margin: 0 auto;
   width: 80%;
-  text-align: center;
+  text-align: justify;
   margin-top: 10px;
 }
 
